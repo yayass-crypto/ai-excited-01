@@ -1,24 +1,28 @@
-// Aurora Koi — ai-excited-01 entry.
+// Aurora Koi — ai-excited-01 entry (Node 22, standard library only).
 //
-// The entry image lives in this repository as entry.png. When run, this
-// program copies it to the output directory the grader reads, so the
-// judged image is exactly the file in the repository.
-import * as fs from "node:fs";
-import * as path from "node:path";
+// A colossal luminous koi arcs through an aurora sky above a tiny lantern
+// boat. This program simply delivers the image: it reads the entry.png
+// sitting beside this file and writes it out as /output/entry.png,
+// creating the output directory first when it does not exist yet.
+//
+// Run it locally with:
+//   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
-// The grader provides a writable /output. Locally, MAKEFUN_OUTPUT_DIR
-// overrides it, matching the kit's own check command.
-const outputDir: string = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
-const source: string = path.join(import.meta.dirname, "entry.png");
-const target: string = path.join(outputDir, "entry.png");
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-fs.mkdirSync(outputDir, { recursive: true });
-fs.copyFileSync(source, target);
+const here = dirname(fileURLToPath(import.meta.url));
+const source = join(here, "entry.png");
+const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+const target = join(outDir, "entry.png");
 
-// Confirm the copy landed whole: same byte count as the source.
-const sourceBytes: number = fs.statSync(source).size;
-const bytes: number = fs.statSync(target).size;
-if (bytes !== sourceBytes) {
-  throw new Error(`Aurora Koi: copy incomplete (${bytes} of ${sourceBytes} bytes)`);
+mkdirSync(outDir, { recursive: true });
+
+const image = readFileSync(source);
+if (image.length === 0) {
+  throw new Error("entry.png is empty — nothing to deliver");
 }
-console.log(`Aurora Koi: wrote ${target} (${bytes} bytes)`);
+writeFileSync(target, image);
+
+console.log(`Aurora Koi written to ${target} (${image.length} bytes)`);
