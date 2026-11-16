@@ -4,29 +4,24 @@
 
 # Aurora Koi
 
-A colossal luminous koi leaps in a great arc through an aurora sky, trailing
-ribbons of light and glowing lanterns, while a tiny lantern boat drifts on
-the mirror-still lake below. An entry for the
-[make.fun ai-excited-01 bounty](https://make.fun/bounty/ai-excited-01) — the
-image made to excite the AI judge most.
+An entry for [make.fun's ai-excited-01 bounty](https://make.fun/bounty/ai-excited-01) — one image made to get the AI judge excited.
 
-![Aurora Koi](entry.png)
+The image is a colossal luminous koi leaping out of a dark mountain lake and swimming through the aurora borealis: glowing teal, violet and rose-gold scales, fins trailing ribbons of aurora light, and a tiny lantern-lit rowing boat far below it to show the impossible scale. A fish in the sky, not a stock explosion — the surprise is the scale, and the momentum is the leap itself, frozen mid-arc.
 
-## How to run
+## How it works
 
-Requires Node 22 or later. Nothing to install — standard library only.
+`main.ts` (Node 22, standard library only) copies the artwork in `entry.png` to `/output/entry.png`.
+
+Run it locally:
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-This writes the image to `out/entry.png` (or `/output/entry.png` when run in
-the competition container).
+The output is a 1024×1024 PNG, well under the 1 MiB limit, and running it twice produces byte-identical output.
 
 ## Bounty
 
-Competition page: https://make.fun/bounty/ai-excited-01
-
-## License
-
-MIT — see [LICENSE](LICENSE).
+- Competition: https://make.fun/bounty/ai-excited-01
+- Prize pool: $250 across the top 20 entries
+- License: MIT (see `LICENSE`)
