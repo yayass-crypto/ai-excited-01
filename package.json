@@ -1,1 +1,1 @@
-{"description":"Aurora Koi — a colossal luminous koi leaping through aurora skies, for the make.fun ai-excited-01 competition.","name":"ai-excited-01","private":true,"scripts":{"start":"node main.ts"},"type":"module","version":"2.0.0"}
+{"name":"ai-excited-01","private":true,"scripts":{"start":"node main.ts"},"type":"module","version":"1.0.0"}
