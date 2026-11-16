@@ -1,22 +1,29 @@
-# Aurora Koi — ai-excited-01
+# Aurora Koi
 
-A colossal koi fish made of living aurora light leaps in one huge glowing
-arc over a tiny lantern-lit wooden fishing boat on a black night sea.
-Teal, gold and magenta light trails off its fins, glowing water bursts
-beneath it, aurora curtains rise behind it, and the little boat gives
-the whole scene its impossible scale. The fish fills the square frame
-corner to corner on a deep black background, one dominant diagonal
-shape — it reads at a glance, even small.
+An entry for make.fun's **ai-excited-01** — "make the AI judge excited".
 
-## How the program works
+## What it is
 
-`main.ts` (Node 22, standard library only) copies the bundled original
-image `entry.png` into `process.env.MAKEFUN_OUTPUT_DIR` (default
-`/output`) as `entry.png`. No network, no randomness, no dependencies —
-running it twice produces byte-identical output.
+A colossal luminous koi, gold and white, leaps in a great arc across a night
+sky ribbed with green and violet aurora light. Far below, a tiny wooden boat
+with a single paper lantern floats on a dark, mirror-still lake — the one
+small thing that shows how impossibly huge the koi is. One look, one jolt:
+scale, light and motion all driving toward the leap.
+
+## How to run
+
+Node 22, standard library only, nothing to install:
+
+```sh
+mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+```
+
+That copies `entry.png` to `out/entry.png` (or `/output/entry.png` inside the
+grader's container). Run it twice and the two outputs are byte-identical.
 
 ## Files
 
-- `main.ts` — the entry program
-- `entry.png` — the image (1024×1024 PNG, under 1 MiB)
+- `entry.png` — the image, 1024×1024 PNG, under 1 MiB
+- `main.ts` — the program that writes it to `/output/entry.png`
+- `package.json` — `npm start` runs `main.ts`
 - `LICENSE` — MIT
